@@ -1,0 +1,65 @@
+<?php get_header(); ?>
+<div class="container">
+  <div class="row" class="cgspace">
+    <div class="col-sm-12 blog-main">
+      <h2 class="blog-post-title">
+        - Noticias -
+      </h2>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 blog-main">
+  <div id="gallery" style="display:none;">
+              <?php if(have_posts()) : ?>
+              <?php while(have_posts()) : the_post(); ?>
+
+
+<?php $photo_url_ori = get_the_post_thumbnail_url(); ?>
+<?php $post_url = get_post_permalink() ?>
+<?php $title = get_the_title(); ?>
+
+<?php 
+  echo '   <a href="' . $post_url . '">';
+  echo '   <img alt="' . $title . '" src="' . $photo_url_ori . '" data-image="' . $photo_url_ori . '" data-description="' .  $title . '" style="display:none">';
+  echo '   </a>';
+ ?>
+              <?php endwhile; ?>
+              <?php else : ?>
+              <p><?php __('No Posts Found'); ?></p>
+              <?php endif; ?>
+            </div>
+            <!-- /.blog-main -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+  <script type="text/javascript">
+
+    jQuery(document).ready(function(){
+
+      jQuery("#gallery").unitegallery({
+
+
+  tile_width: 354,            //tile width
+  tile_height: 223,           //tile height
+  tile_enable_textpanel:true,
+  tile_textpanel_title_text_align: "center",
+  tile_textpanel_title_font_size:12,
+  tile_border_width:0,
+  grid_num_rows:6,
+  theme_navigation_type: "bullets",  
+  theme_space_between_arrows: 50,
+  tile_as_link: true,
+
+      });
+
+    });
+    
+  </script>
+
+
+<?php get_footer(); ?>
