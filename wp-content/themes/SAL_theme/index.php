@@ -1,6 +1,7 @@
 <?php get_header(); ?>
 <div class="container">
   <div id="gridcontainer">
+  <div class="row">
     <?php
       $counter = 1; //start counter
       
@@ -35,16 +36,21 @@
       </div>
       <h2><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_excerpt(); ?></a></h2>
     </div>
+
     <?php
       $counter = 0;
       endif;
       ?>
     <?php
       $counter++;
-      endwhile;
-      //Pagination can go here if you want it.
-      endif;
+      endwhile; 
       ?>
+      </div>
+      <div class="row">
+<?php kriesi_pagination(); ?>
+    </div>
+
+      <?php endif; ?>
   </div>
 </div>
 <?php get_footer(); ?>

@@ -56,7 +56,8 @@
             <div id="logo" class="col-md-5"></div>
             <div class="col-md-7 nav_container">
               <div class="widget_search">
-                <?php if ( ! dynamic_sidebar( 'header' ) ) {} ?> &nbsp;&nbsp;&nbsp;&nbsp; > 
+                
+                 &nbsp;&nbsp;&nbsp;&nbsp; > 
                 <nav class="lang-nav">
                   <?php
                     wp_nav_menu( array(
