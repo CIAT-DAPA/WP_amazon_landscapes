@@ -11,7 +11,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-6">
-        <p>El <strong>Proyecto Paisajes Sostenibles para la Amazonía (SAL)</strong> surge como una estrategia para complementar iniciativas que Perú y Colombia vienen adelantando para reducir la deforestación, incrementar la captura de carbono y fortalecer la capacidad de adaptación al cambio climático a nivel local y nacional.<br/><br/> A través de un enfoque multidisciplinario, el proyecto pretende reducir la deforestación, incrementar la captura de carbono y fortalecer la capacidad de adaptación al cambio climático entre agricultores y autoridades ambientales de Colombia y Perú.</p>
+        <p>El <strong>HolaProyecto Paisajes Sostenibles para la Amazonía (SAL)</strong> surge como una estrategia para complementar iniciativas que Perú y Colombia vienen adelantando para reducir la deforestación, incrementar la captura de carbono y fortalecer la capacidad de adaptación al cambio climático a nivel local y nacional.<br/><br/> A través de un enfoque multidisciplinario, el proyecto pretende reducir la deforestación, incrementar la captura de carbono y fortalecer la capacidad de adaptación al cambio climático entre agricultores y autoridades ambientales de Colombia y Perú.</p>
       </div>
       <div class="col-md-6">
         <p>Con el fin de que estos países cumplan la meta de reducir las pérdidas netas de sus bosques naturales a cero, así como diseñar planes nacionales de acción para mitigar y adaptarse al cambio climático, los investigadores del proyecto SAL trabajan para identificar sistemas agrícolas capaces de aumentar sumideros de carbono, proteger bosques, incrementar la capacidad de adaptación de las comunidades locales al cambio climático y mejorar la productividad agrícola.</p>
@@ -35,7 +35,7 @@
           // query_posts('category_name=News'); 
           $args=array(
           'showposts' => 1,
-          'category_name' => 'News',
+          'category_name' => 'Noticia',
           'order' => 'DESC',
           );
           $post_query = new WP_Query($args); 

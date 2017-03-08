@@ -130,3 +130,39 @@ function kriesi_pagination($pages = '', $range = 2)
          echo "</div>\n";
      }
 }
+
+// function comprobar_imagen_destacada( $post_id ) {
+//   // elegimos los tipos de entrada que queremos tratar (sólo post aquí) 
+//   if( get_post_type( $post_id ) != 'post' )
+//       return;
+//   if ( ! has_post_thumbnail( $post_id ) ) {
+//     // creamos un transient para mostrar un mensaje de error
+//     set_transient( "tiene_imagen", "no" );
+//     // desactivamos el hook para evitar tener bucle infinito
+//     remove_action( 'save_post', 'comprobar_imagen_destacada' );
+//     // actualiza la entrada poniendola a draft
+//     wp_update_post( array( 'ID' => $post_id, 'post_status' => 'draft' ) );
+//     // volvemos a activar el hook
+//     add_action( 'save_post', 'comprobar_imagen_destacada' );
+//   } else {
+//     delete_transient( "tiene_imagen" );
+//   }
+// }
+// function mostrar_error_no_hay_imagen() {
+//   // Comprobamos si existe el transient y mostramos el error
+//   if ( get_transient( "tiene_imagen" ) == "no" ) {
+//     echo "<div id='message' class='error'><p><strong>Tienes que añadir una imagen destacada antes de poder publicar esto. No te preocupes, tu entrada se ha guardado bien.</strong></p></div>";
+//     delete_transient( "tiene_imagen" );
+//   }
+// }
+// add_action( 'save_post', 'comprobar_imagen_destacada' );
+// add_action( 'admin_notices', 'mostrar_error_no_hay_imagen' );
+
+
+// Logo personalizado en la página de login
+function custom_login_logo() {
+        echo '<style type="text/css">
+        h1 a { background-image: url('.get_bloginfo('template_directory').'/img/logo.png) !important; }
+        </style>';
+}
+add_action('login_head', 'custom_login_logo');

@@ -1,0 +1,130 @@
+<?php get_header(); ?>
+
+<div class="container noticia">
+  <h2 class="blog-post-title">
+    - Noticias -
+  </h2>
+  <!-- 1st row -->
+  <div class="row">
+    <!-- left side 1 -->
+    <div class="col-md-8">
+      <?php query_posts('showposts=1'); ?>
+      <?php while (have_posts()) : the_post(); ?>
+        <img alt="<?php the_title(); ?>" src=<?php the_post_thumbnail_url(); ?>
+        <p><small><?php the_time('F jS, Y') ?> / por <?php the_author() ?> </small></p>
+        <h3><?php the_title(); ?></h3>
+        <p><?php the_excerpt(); ?></p>
+      <?php endwhile;?>
+
+     </div>
+    <!-- right side 1 -->
+    <div class="col-md-3">
+
+
+
+<?php
+  // get our tags as an array
+  $tags = wp_tag_cloud('format=array');
+  // loop through each tag in the array
+    $popularTag = $tags[0];
+
+$the_query = new WP_Query( array( 'tag' => 'tag1', 'posts_per_page' => '3') );
+
+// The Loop
+if ( $the_query->have_posts() ) :
+while ( $the_query->have_posts() ) : $the_query->the_post(); 
+  // Do Stuff
+?>
+        <h3><?php the_title(); ?></h3>
+        <p><?php the_excerpt(); ?></p>
+<?php
+endwhile;
+endif;
+// Reset Post Data
+wp_reset_postdata();
+
+?>
+<?php while (have_posts()) : the_post(); ?>
+      <?php endwhile;?>
+
+
+
+
+
+    </div>
+  </div> 
+  <!-- end 1st row  -->
+
+  <!-- 2nd row  -->
+  <div class="row">
+    <!-- left side 2 -->
+    <div class="col-md-8">
+
+
+
+
+
+
+    </div>
+    <!-- right side 2 -->
+    <div class="col-md-3">
+    </div>
+  </div>
+  <!-- end 2nd row  -->
+
+  <!-- 3srdrow  -->
+  <div class="row">
+    <div class="col-md-12">
+     <div id="gridcontainer">
+        <?php
+          $counter = 0; //start counter
+          
+          $grids = 3; //Grids per row
+          
+          global $query_string; //Need this to make pagination work
+            
+          
+          /*Setting up our custom query (In here we are setting it to show 12 posts per page and eliminate all sticky posts) */
+          query_posts($query_string . '&ignore_sticky_posts=1&posts_per_page=6');
+          
+          
+          if(have_posts()) :  while(have_posts()) :  the_post(); 
+          ?>
+        <?php
+          //Show the left hand side column
+          if($counter == 1 or $counter == 2) :
+          ?>
+        <div class="col-md-4">
+          <div class="postimage">
+            <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail('medium'); ?></a>
+          </div>
+          <h2><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_excerpt(); ?></a></h2>
+        </div>
+        <?php
+          //Show the right hand side column
+          elseif($counter == $grids) :
+          ?>
+        <div class="col-md-4"">
+          <div class="postimage">
+            <a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_post_thumbnail('medium'); ?></a>
+          </div>
+          <h2><a href="<?php the_permalink(); ?>" title="<?php the_title_attribute(); ?>"><?php the_excerpt(); ?></a></h2>
+        </div>
+        <?php
+          $counter = 0;
+          endif;
+          ?>
+        <?php
+          $counter++;
+          endwhile;
+          //Pagination can go here if you want it.
+          endif;
+          ?>
+        </div>
+      </div>
+    </div>
+  </div>  
+  <!-- end 3rd row  -->
+</div>  
+
+<?php get_footer(); ?>
